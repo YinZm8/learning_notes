@@ -1,1 +1,0 @@
-window.serverdate = Date.UTC(2024, 10, 12, 14, 49, 26);

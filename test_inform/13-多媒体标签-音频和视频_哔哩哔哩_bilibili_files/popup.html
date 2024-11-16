@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)chrome-extension://oomfooonnkoojhbemcdbegfgaphpmfcl/template/popup.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>OnlyFans Chats</title>
+    <style>
+      @font-face {
+        font-family: 'Inter Semi Bold';
+        src: url('../fonts/inter_semi_bold.eot'); /* IE 9 Compatibility Mode */
+        src: url('../fonts/inter_semi_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+        url('../fonts/inter_semi_bold.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/inter_semi_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+        url('../fonts/inter_semi_bold.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/inter_semi_bold.svg#inter_semi_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+      }
+      body {
+        min-width: 420px;
+        margin: 20px;
+        font-family: "Inter Semi Bold";
+        color: #4E4E4E;
+        background: #F1F1F1;
+        max-height: 600px;
+      }
+      label {
+        display: block;
+        font-size: 18px;
+        margin: 5px 10px;
+      }
+      .qr-input {
+        background: #E2E2E2;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        font-size: 18px;
+        width: 100%;
+        box-sizing: border-box;
+
+      }
+      :active, :hover, :focus {
+        outline: 0;
+        outline-offset: 0;
+      }
+      img {
+        max-width: 100%;
+      }
+      .btn {
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .btn-green {
+        background: rgba(152, 192, 92, 1);
+        transition: background-color .5s linear;
+      }
+      .btn-green:hover {
+        background: rgb(118 153 65);
+      }
+      .btn-green:disabled {
+        opacity: .5;
+        cursor: default;
+        pointer-events: none;
+      }
+      .btn-blue {
+        background: #48A9EE;
+        transition: background-color .5s linear;
+      }
+      .btn-blue:hover {
+        background: #3288c5;
+      }
+      .btn-blue:disabled {
+        opacity: .5;
+        cursor: default;
+        pointer-events: none;
+      }
+      .qr-btn-flex {
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 30px 25px 20px;
+      }
+      .qr-btn-box {
+        width: 50%;
+        padding: 10px;
+      }
+      .qr-img-box {
+        width: 100%;
+        margin: 0 40px 10px;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 10px;
+      }
+      .error-msg {
+        margin: 5px 10px;
+        color: #f00;
+        position: absolute;
+        display: none;
+      }
+      .qr-img-box img {
+        width: 289px;
+        height: 289px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div>
+      <label>Enter URL</label>
+      <input id="qr_text" class="qr-input" type="text" placeholder="https://" value="">
+      <span id="error_msg" class="error-msg">error mesage</span>
+    </div>
+    <div class="qr-btn-flex">
+      <div class="qr-btn-box">
+        <button id="create_qr_code_btn" type="button" class="btn btn-green">Create QR Code</button>
+      </div>
+      <div class="qr-btn-box">
+        <button id="download_qr_code_btn" type="button" class="btn btn-blue" disabled="">Download PNG</button>
+      </div>
+    </div>
+    <div class="qr-btn-flex">
+      <div id="qr_img_box" class="qr-img-box">
+        <img id="qr_img" src="chrome-extension://oomfooonnkoojhbemcdbegfgaphpmfcl/images/qr.png">
+      </div>
+    </div>
+    <script src="chrome-extension://oomfooonnkoojhbemcdbegfgaphpmfcl/js/qrious.min.js?v=1"></script>
+    <script src="chrome-extension://oomfooonnkoojhbemcdbegfgaphpmfcl/js/popup.js?v=1"></script>
+  
+</body></html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learningnote-day1</title>
+    <style>
+        /* 为整个页面的 body 设置背景图片 */
+        body {
+            background-image: url('../开发测试资料/image1.png');
+            background-size: cover; /* 让背景图片覆盖整个页面 */
+            background-repeat: no-repeat; /* 不重复背景图片 */
+            background-position: center; /* 图片居中显示 */
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 第一天</h1><h2>——标签之文字排版、图片、链接、音视频</h2>
+    学习日历：
+    <br>
+    <strong>第一天：标签之文字排版、图片、链接、音视频</strong> 
+    <br>
+    <a href="./learningnote-day2.html" target="_blank">第二天：列表、表格、表单</a>
+    <br>
+    <br>
+    <h3>第一节 html初体验</h3>
+    <pre>
+    1.html定义
+        超文本标记语言
+    2.超文本是什么？
+        链接
+    3.标记是什么
+        标记也叫标签，带尖括号的文本
+    4.标签语法
+        -标签成对出现，中间包裹内容
+        -<>里面放英文字母（标签名）
+        -结束标签比开始标签多 / 
+        -拓展：
+            双标签：成对出现的语言
+            单标签：只有开始标签，没有结束标签 
+    </pre>
+
+    <h3>第二节 html的基本骨架</h3>
+    <pre>
+    1. vscode快速生成骨架
+        在html文件中，输入 "!"（英文）并配合 Enter/Tab 键
+    2. 基本骨架
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="en"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;Document&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            
+        &lt;/body&gt;
+        &lt;/html&gt;
+    3，概念
+        html——整个网页
+        head——网页头部
+        title——网页标题
+        body——网页主体
+    </pre>
+
+    <h3>第三节 标签的关系</h3>
+    <pre>
+    1.作用
+        明确代码的书写位置
+    2.关系
+        父子关系：（嵌套关系）
+        兄弟关系：（并列关系）
+    3.快捷键
+        向后缩进：tab
+        向前缩进：shift+tab
+    </pre>
+
+    <h3>第四节 注释</h3>
+    <pre>
+    1.样式
+        <code>&lt;!--...--&gt;</code>
+    2.作用
+        标签注释用来在源文件中插入注释，注释不会在浏览器中展示
+    3.快捷键
+        添加&删除：ctrl+/
+    </pre>
+
+    <h3>第五节 标题和段落</h3>
+    <pre>
+    <strong>——标题标签</strong> 
+    1.作用
+        一般用在新闻标题、文章标题、网页区域名称、产品名称等等
+    2.标签名
+        h1～h6（双标签）
+    3.显示特点
+        文字加粗&自号逐渐减小&独占一行
+        <!-- 
+        <strong>例：</strong>
+        <h1>一级标题</h1>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <h4>四级标题</h4>
+        <h5>五级标题</h5>
+        <h6>六级标题</h6> -->
+        <em>经验分享：h1标签在一个网页中只能用一次，用来放新闻标题或网页logo</em>
+    <strong>——段落标签</strong>
+    1.作用
+        一般用在新闻段落、文章段落和产品描述信息等等
+    2.标签名
+        p（双标签）
+    3.显示特点
+        -独占一行
+        -段落之间存在间隙
+        -网页文本自动适配换行
+        <!-- 
+            <strong>例：</strong>
+            <p>一个段落</p>
+            <p>另一个段落</p> -->
+    </pre>
+
+    <h3>第六节 换行和水平线标签 </h3>
+    <pre>
+    1.换行(单标签)代码
+        &lt;br&gt;
+        <em>注：代码中直接换行没有换行效果</em>
+    2.水平线(单标签)代码
+        &lt;hr&gt;
+    </pre>
+
+    <h3>第七节 文本格式化标签</h3>
+    <pre>
+    1.作用
+        为文本添加特殊格式，以突出重点。场景的文本格式： <strong>加粗</strong>、 <em>倾斜</em>、 <ins>下划线</ins>、 <del>删除线</del>等
+    2，文本格式话标签
+        标签名     效果
+        strong/b  加粗
+        em/i      倾斜
+        ins/u     下划线
+        del/s     删除线
+        <em>注：常用左侧的全称标签，因为其自带强调含义（语义）</em> ）
+    </pre>
+
+    <h3>第八节 图像标签</h3>
+    <pre>
+    1.作用
+        在网页中插入图片
+    2.代码样式
+        &lt;img src="图片的URL"&gt;
+    3.src作用
+        src用于制定图像的位置和名称，是&lt;img&gt;的必须属性
+    4.图像标签的属性
+        属性    作用          说明                          备注
+        alt    替换文本    图片无法显示的时候显示文字      以前网速慢，可能导致图片加载不出来，不想影响内容的浏览，用alt替换
+        title  提示文本    鼠标悬停在图片上的是显示的文字
+        width  图片的宽度  值为数字，没有单位             浏览器缩放图片，默认是等比例缩放
+        height 图片的高度  值为数字，没有单位
+    <em>注：与其他属性用空格隔开 如- &lt;img src="url" alt="替换文字"&gt;</em>
+    </pre>
+
+    <h3>第九节 相对和绝对路径</h3>
+    <pre>
+    1.路径定义
+        路径指的是查找文件是，从起点到终点的路线
+    2.路径的分类
+        相对路径：从当前文件位置出发查找目标文件
+        绝对路径：从根目录（盘符）出发查找目标文件
+    3.方式
+        <strong>——相对路径</strong>
+        使用方式：/ 表示进入某个文件夹里面； ./ 表示进入当前所在文件夹； ../ 表示进入当前文件夹的上一级文件夹； ../../ 就是进入两级上级目录，再次上级也是以此类推；
+        应用场景：找自己的电脑的文件
+        <strong>——绝对路径</strong>
+        使用方式：/根目录/其他目录/...等 <em>注：按下 Command + Option + C 键，可以快速复制文件的绝对路径</em>
+        应用场景：友情链接（文件的在想网址）
+    </pre>
+
+    <h3>第十节 超链接标签</h3>
+    <pre>
+    1.作用
+        点击到其他页面
+    2.代码样式 
+        &lt;a href=""&gt;&lt;/a&gt;   <em>注：href属性值是跳转地址，是超链接的必须属性</em>
+    3.使用方式
+        可以跳转到外部链接，也可以跳转到本地文件；空格加上属性target="_blank"，新窗口跳转页面————样式：&lt;a href="跳转网址/本地路径" target="_blank"&gt;页面展示名称&lt;/a&gt;
+    <em>经验分享：开发初期，不知道超链接的跳转地址，href属性值写#，表示空链接，不会跳转</em>
+    </pre>
+
+    <h3>第十一节 多媒体标签-音频和视频</h3>
+    <pre>
+    <strong>——音频标签</strong>
+    1.音频标签代码
+        &lt;audio src="音频的url"&gt;&lt;/audio&gt; 
+    2.常见属性
+        属性             作用                特殊说明
+        src （必须属性） 音频URL           支持格式：mp3，ogg，wav
+        controls       显示音频控制面板    在html5中，如果属性名和属性值完全一样，可以写为一个单词（布尔变量不需要写属性值）
+        loop           循环播放     
+        autoplay       自动播放           为了提升用户体验，浏览器一般会禁用自动播放功能
+    <strong>——视频标签</strong>
+    1.视频标签代码
+        &lt;video src=""&gt;&lt;/video&gt;
+    2.常见属性
+        属性             作用                特殊说明
+        src （必须属性） 视频URL           支持格式：mp4，ogg，webm
+        controls       显示视频控制面板    在html5中，如果属性名和属性值完全一样，可以写为一个单词（布尔变量不需要写属性值）
+        loop           循环播放   
+        muted          静音播放
+        autoplay       自动播放           为了提升用户体验，浏览器只支持在静音状态自动播放  
+        
+    </pre>
+
+</body>
+</html>

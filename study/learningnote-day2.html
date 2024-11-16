@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learningnote-day2</title>
+    <style>
+        /* 为整个页面的 body 设置背景图片 */
+        body {
+            background-image: url('../开发测试资料/image1.png');
+            background-size: cover; /* 让背景图片覆盖整个页面 */
+            background-repeat: no-repeat; /* 不重复背景图片 */
+            background-position: center; /* 图片居中显示 */
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 第二天</h1><h2>——列表、表格、表单</h2>
+    学习日历：
+    <br>
+    <a href="./learningnote-day1.html" target="_blank">第一天：标签之文字排版、图片、链接、音视频</a>
+    <br>
+    <strong>第二天：列表、表格、表单</strong> 
+    <br>
+    <br>
+    <h3>第一节 列表-无序和有序和定义列表</h3>
+    <pre>
+    1.作用
+        布局排列整齐的内容
+    2.列表分类
+        无序列表（工作场景下使用最多）、有序列表、定义列表
+    <strong>——无序列表</strong>
+    1.作用
+        布局排列整齐的不需要规定顺序的区域
+    2.标签
+        ul嵌套li，ul是无序列表，li是列表条目
+    3.代码样式
+        &lt;ul&gt;
+            &lt;li&gt;第一项&lt;li&gt;
+            &lt;li&gt;第二项&lt;li&gt;
+            &lt;li&gt;第三项&lt;li&gt;
+            ...
+        &lt;ul&gt;
+        <em>注意事项：
+            1.ul标签里面只能包裹li标签
+            2.li标签里面可以包裹任何内容</em>
+    <strong>——有序列表</strong>
+    1.作用
+        布局排列整齐的需要规定顺序
+    2.标签
+        ol嵌套li，ol是有序列表，li是列表条目
+    3.代码样式
+        &lt;ol&gt;
+            &lt;li&gt;第一项&lt;li&gt;
+            &lt;li&gt;第二项&lt;li&gt;
+            &lt;li&gt;第三项&lt;li&gt;
+            ...
+        &lt;ol&gt;
+        <em>注意事项：
+            1.ol标签里面只能包裹li标签
+            2.li标签里面可以包裹任何内容</em>
+    <strong>——定义列表</strong>
+    1.标签
+        dl嵌套dt和dd，dl是定义列表，dt是定义列表的标题，dd是定义列表的描述/详情
+    2.代码样式
+        &lt;dl&gt;
+            &lt;dt&gt;列表标题&lt;dt&gt;
+            &lt;dd&gt;列表描述/详情&lt;dd&gt;
+            &lt;dd&gt;列表描述/详情&lt;dd&gt;
+            ...
+        &lt;dl&gt;
+        <em>注意事项：
+            1.dl标签里面只能包裹dt、dd标签
+            2.dt和dd里面可以包裹任何内容</em>      
+    </pre>
+
+    <h3>第二节 表格</h3>
+    <pre>
+    1.基本用法
+        网页中的表格与Excel类似，用来展示数据
+    
+    2.标签
+        table嵌套tr，tr嵌套td，th
+    3.说明
+        <table border="1">
+            <tr>
+                <th>标签名</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>table</td>
+                <td>表格</td>
+            </tr>
+            <tr>
+                <td>th</td>
+                <td>表头单元格</td>
+            </tr>
+            <tr>
+                <td>td</td>
+                <td>内容单元格</td>
+            </tr>
+        </table>
+    <em>提示：在网页中，表格默认没有边框线，使用border属性可以为表格填加边框线</em>
+    <strong>——表格结构标签（了解即可）</strong>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>标签名</th>
+                    <th>含义</th>
+                    <th>特殊说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>thead</td>
+                    <td>表格头部</td>
+                    <td>表格头部内容</td>
+                </tr>
+                <tr>
+                    <td>tbody</td>
+                    <td>表格主体</td>
+                    <td>主要内容区域</td>
+                </tr>
+                <tr>
+                    <td>tfoot</td>
+                    <td>表格底部</td>
+                    <td>汇总信息区域</td>
+                </tr>
+            </tbody>
+        </table>
+    <strong>——合并单元格</strong>
+    1.作用
+        将多个单约个合并成一个单元格，以合并同类信息
+    2.合并单元格的步骤
+        1）明确合并的目标
+        2）保留最左上的单元格，添加属性（取值是数字，表示需要合并的单元格数量）
+            -跨行合并，保留最上单元格，添加属性<strong>rowspan</strong>
+            -夸列合并，保留最左单元格，添加属性<strong>colspan</strong>
+        3）删除其他单元格
+    <em>注：
+        1.合并单元格属性添加至想要保留的具体项目标签中
+        2.不能跨表格结构标签合并</em>
+    </pre>
+</body>
+</html>

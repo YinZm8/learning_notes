@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印花系列 | 等鱼七</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .series-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .series-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .series-image {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .series-item:hover .series-image {
+            transform: scale(1.05);
+        }
+
+        .series-overlay {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .series-item:hover .series-overlay {
+            opacity: 1;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .filter-btn.active {
+            background-color: #1a202c;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="text-2xl font-medium tracking-wider">等 鱼 七</a>
+                <div class="hidden md:flex space-x-12">
+                    <a href="./home_page.html" class="nav-link">首页</a>
+                    <a href="#" class="nav-link">印花系列</a>
+                    <a href="./bag_page.html" class="nav-link">帆布包</a>
+                    <a href="./about_us.html" class="nav-link">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="pt-32 pb-20">
+        <!-- 页面标题 -->
+        <div class="text-center mb-20">
+            <h1 class="text-5xl font-light mb-6">印花系列</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                每一个系列都代表着独特的设计理念，从自然、几何到艺术元素，我们将不同的灵感转化为精美的印花图案。
+            </p>
+        </div>
+
+        <!-- 分类筛选 -->
+        <div class="container mx-auto px-6 mb-12">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition-colors active">
+                    全部系列
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
+                    自然系列
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
+                    几何系列
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
+                    艺术系列
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
+                    东方系列
+                </button>
+            </div>
+        </div>
+
+        <!-- 印花系列展示 -->
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- 春日花语系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/0110ea66b25791cd04171000a49fd3.jpg" alt="春日花语系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">春日花语系列</h3>
+                                <p class="mb-4">以春天盛开的花朵为灵感，capturing自然的生命力</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">春日花语系列</h3>
+                        <p class="text-gray-600 mt-2">2025春夏系列</p>
+                    </div>
+                </div>
+
+                <!-- 几何艺术系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/01849766b2578ccd06dd1000f3cc41.jpg" alt="几何艺术系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">几何艺术系列</h3>
+                                <p class="mb-4">现代简约的几何图案，展现都市美学</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">几何艺术系列</h3>
+                        <p class="text-gray-600 mt-2">2025限定系列</p>
+                    </div>
+                </div>
+
+                <!-- 东方意境系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/01db4a59fc3b36a801216a4bbb00a3.jpg" alt="东方意境系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">东方意境系列</h3>
+                                <p class="mb-4">融合传统东方元素，展现文化魅力</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">东方意境系列</h3>
+                        <p class="text-gray-600 mt-2">2025秋冬系列</p>
+                    </div>
+                </div>
+
+                <!-- 抽象艺术系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/1000g0081rblcef6f60005ojuaupoc7akqbv98ao.webp" alt="抽象艺术系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">抽象艺术系列</h3>
+                                <p class="mb-4">自由流动的线条与色彩，展现艺术张力</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">抽象艺术系列</h3>
+                        <p class="text-gray-600 mt-2">2025艺术家合作系列</p>
+                    </div>
+                </div>
+
+                <!-- 海洋生态系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/3fb38494bcf5bee99b94730a954dda5.jpg" alt="海洋生态系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">海洋生态系列</h3>
+                                <p class="mb-4">描绘海洋生物的多样性，呼吁环保理念</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">海洋生态系列</h3>
+                        <p class="text-gray-600 mt-2">2025环保特别系列</p>
+                    </div>
+                </div>
+
+                <!-- 城市印象系列 -->
+                <div class="series-item">
+                    <div class="relative overflow-hidden group cursor-pointer">
+                        <img src="./pr_pic/5b89e49c572c3_610.jpg" alt="城市印象系列" class="w-full series-image"/>
+                        <div class="series-overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white p-6">
+                                <h3 class="text-2xl mb-2">城市印象系列</h3>
+                                <p class="mb-4">捕捉都市建筑与生活的独特魅力</p>
+                                <span class="inline-block border-b border-white">查看详情</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-medium">城市印象系列</h3>
+                        <p class="text-gray-600 mt-2">2025城市系列</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 滚动动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const seriesItems = document.querySelectorAll('.series-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            seriesItems.forEach(item => observer.observe(item));
+
+            // 分类按钮切换
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

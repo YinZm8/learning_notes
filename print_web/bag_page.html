@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帆布包系列 | 等鱼七</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hover-scale {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+
+        .text-fade {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-fade::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(transparent, white);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="text-2xl font-medium tracking-wider">等 鱼 七</a>
+                <div class="hidden md:flex space-x-12">
+                    <a href="./home_page.html" class="nav-link">首页</a>
+                    <a href="./print_page.html" class="nav-link">印花系列</a>
+                    <a href="#" class="nav-link">帆布包</a>
+                    <a href="./about_us.html" class="nav-link">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主视觉区域 -->
+    <section class="pt-20">
+        <div class="relative h-screen">
+            <img src="./pr_pic/1711cf80ba234ac5b919b916ef192be0_1.png" alt="帆布包主视觉" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h1 class="text-5xl md:text-7xl font-light mb-6">Canvas Collection</h1>
+                    <p class="text-xl md:text-2xl tracking-wide">将艺术与实用完美结合</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计理念 -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center scroll-reveal">
+                <h2 class="text-4xl font-light mb-12">设计理念</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    在等鱼七，我们相信每一个帆布包都应该是独特的艺术品。
+                    从材料的选择到印花的设计，每一个细节都体现着我们对品质的追求。
+                    我们使用优质帆布材料，采用环保印花工艺，让每个作品都与自然和谐共处。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品系列展示 -->
+    <section class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16">产品系列</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- 手提托特包 -->
+                <div class="scroll-reveal">
+                    <div class="group relative overflow-hidden">
+                        <img src="./pr_pic/3922d93b22b34b79a4427b789b26f526_0.png" alt="手提托特包" class="w-full hover-scale"/>
+                        <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <h3 class="text-2xl mb-2">经典托特包</h3>
+                                <p class="mb-4">简约实用的日常之选</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-medium">经典托特包</h3>
+                        <p class="text-gray-600 mt-2">¥499</p>
+                    </div>
+                </div>
+
+                <!-- 单肩水桶包 -->
+                <div class="scroll-reveal">
+                    <div class="group relative overflow-hidden">
+                        <img src="./pr_pic/3922d93b22b34b79a4427b789b26f526_3.png" alt="单肩水桶包" class="w-full hover-scale"/>
+                        <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <h3 class="text-2xl mb-2">艺术水桶包</h3>
+                                <p class="mb-4">独特造型，展现个性</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-medium">艺术水桶包</h3>
+                        <p class="text-gray-600 mt-2">¥599</p>
+                    </div>
+                </div>
+
+                <!-- 双肩背包 -->
+                <div class="scroll-reveal">
+                    <div class="group relative overflow-hidden">
+                        <img src="./pr_pic/3922d93b22b34b79a4427b789b26f526_2.png" alt="双肩背包" class="w-full hover-scale"/>
+                        <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <h3 class="text-2xl mb-2">文艺双肩包</h3>
+                                <p class="mb-4">舒适实用的日常伴侣</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-medium">文艺双肩包</h3>
+                        <p class="text-gray-600 mt-2">¥699</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工艺展示 -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16">匠心工艺</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">优质帆布</h3>
+                        <p class="text-gray-600">精选高密度帆布材料，耐用环保，触感舒适。每一寸布料都经过严格筛选，确保品质。</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">印花工艺</h3>
+                        <p class="text-gray-600">采用先进的数码印花技术，色彩鲜艳持久，纹理清晰，经久耐用不掉色。</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">手工缝制</h3>
+                        <p class="text-gray-600">每个包包都由经验丰富的匠人手工缝制，确保每一针每一线都完美呈现。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用场景 -->
+    <section class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16">生活场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="scroll-reveal">
+                    <img src="./pr_pic/3922d93b22b34b79a4427b789b26f526_0.png" alt="日常使用场景" class="w-full rounded-lg shadow-lg"/>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-medium mb-2">都市日常</h3>
+                        <p class="text-gray-600">无论是上班通勤还是周末出游，都能完美胜任</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <img src="./pr_pic/1711cf80ba234ac5b919b916ef192be0_3.png" alt="旅行场景" class="w-full rounded-lg shadow-lg"/>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-medium mb-2">旅行探索</h3>
+                        <p class="text-gray-600">轻便实用，是您旅途中的理想伴侣</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 环保理念 -->
+    <section class="parallax py-32" style="background-image: url('/api/placeholder/1920/1080')">
+        <div class="bg-black bg-opacity-50">
+            <div class="container mx-auto px-6 py-24">
+                <div class="max-w-3xl mx-auto text-center text-white">
+                    <h2 class="text-4xl font-light mb-8">环保承诺</h2>
+                    <p class="text-lg leading-relaxed">
+                        我们致力于可持续发展，从材料选择到生产工艺，
+                        始终坚持环保理念。每个包包都使用可回收材料，
+                        印花过程采用环保墨水，包装也选用可降解材料。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计师手记 -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-light text-center mb-16">设计师手记</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">设计灵感</h3>
+                        <p class="text-gray-600">
+                            每一个图案的诞生都源于对生活的观察与思考。
+                            从自然中汲取灵感，将情感融入设计，让每个包包都讲述一个独特的故事。
+                        </p>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">色彩搭配</h3>
+                        <p class="text-gray-600">
+                            精心调配的色彩方案，既要突出艺术性，
+                            又要考虑实用性，让包包既是艺术品，也是日常伴侣。
+                        </p>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">功能设计</h3>
+                        <p class="text-gray-600">
+                            在追求美感的同时，我们始终不忘实用性。
+                            精心设计的收纳空间和背带细节，让使用更加便利舒适。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 滚动动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            scrollRevealElements.forEach(element => observer.observe(element));
+        });
+    </script>
+</body>
+</html>

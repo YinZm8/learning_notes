@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 | 等鱼七</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cat-image:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="text-2xl font-medium tracking-wider">PRINT ATELIER</a>
+                <div class="hidden md:flex space-x-12">
+                    <a href="./home_page.html" class="hover:text-gray-600 transition-colors">首页</a>
+                    <a href="./print_page.html" class="hover:text-gray-600 transition-colors">印花系列</a>
+                    <a href="./bag_page.html" class="hover:text-gray-600 transition-colors">帆布包</a>
+                    <a href="#" class="hover:text-gray-600 transition-colors">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <!-- 我们的故事 -->
+            <section class="max-w-4xl mx-auto mb-20 fade-up">
+                <h1 class="text-4xl font-light mb-12 text-center">关于我们</h1>
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        &nbsp;&nbsp;大家好！我们是皮皮和小尹，一对热爱设计的情侣档。2025年我们怀着对印花设计的热爱，
+                        创立了这个小小的工作室。我们希望通过独特的印花图案，为每个帆布包注入生命力和故事。
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        &nbsp;&nbsp;工作室的设计灵感很多都来自于我们的两只猫主子 —— 一饼和六月。
+                        它们时而优雅时而搞怪的日常，总能给我们带来无限创意。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 猫咪介绍 -->
+            <section class="max-w-4xl mx-auto mb-20">
+                <h2 class="text-2xl font-light mb-8 text-center">我们的首席设计官</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 奶糖 -->
+                    <div class="fade-up">
+                        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                            <img src="./pr_pic/WechatIMG25193.jpg" alt="一饼" class="w-48 h-48 mx-auto mb-4 rounded-full object-cover cat-image"/>
+                            <h3 class="text-xl font-medium mb-2">一饼</h3>
+                            <p class="text-gray-600">
+                                两岁的虎皮纹矮脚猫，调皮捣蛋的哥哥，
+                                最爱在我们工作时霸占画稿。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 摩卡 -->
+                    <div class="fade-up">
+                        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                            <img src="./pr_pic/201941728401845_.pic.jpg" alt="六月" class="w-48 h-48 mx-auto mb-4 rounded-full object-cover cat-image"/>
+                            <h3 class="text-xl font-medium mb-2">六月</h3>
+                            <p class="text-gray-600">
+                                一岁的纯白矮脚猫，好好脾气但粘人的妹妹，
+                                经常给我们的设计带来意外灵感。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 联系我们 -->
+            <section class="max-w-4xl mx-auto fade-up">
+                <h2 class="text-2xl font-light mb-8 text-center">找到我们</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- 小红书 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <img src="./pr_pic/file____Users_yinziming_Documents_vscode_print_web_home_page.html.png" alt="小红书二维码" class="w-32 h-32 mx-auto mb-4"/>
+                        <p class="text-gray-600">小红书: @等鱼七</p>
+                    </div>
+                    <!-- 微信 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <img src="./pr_pic/file____Users_yinziming_Documents_vscode_print_web_home_page.html.png" alt="微信二维码" class="w-32 h-32 mx-auto mb-4"/>
+                        <p class="text-gray-600">微信: @等鱼七</p>
+                    </div>
+                    <!-- 联系方式 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <img src="./pr_pic/file____Users_yinziming_Documents_vscode_print_web_home_page.html.png" alt="联系方式二维码" class="w-32 h-32 mx-auto mb-4"/>
+                        <p class="text-gray-600">客服微信: print_cats</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeElements.forEach(element => observer.observe(element));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { Card } from '@/components/ui/card';
+
+const SpaceShooter = () => {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const [playerPos, setPlayerPos] = useState({ x: 200, y: 500 });
+  const [bullets, setBullets] = useState([]);
+  const [enemies, setEnemies] = useState([]);
+  const [particles, setParticles] = useState([]);
+  const [stars, setStars] = useState([]);
+  
+  const gameWidth = 400;
+  const gameHeight = 600;
+
+  // 生成星空背景
+  useEffect(() => {
+    const newStars = Array.from({ length: 50 }, () => ({
+      x: Math.random() * gameWidth,
+      y: Math.random() * gameHeight,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 2 + 1
+    }));
+    setStars(newStars);
+  }, []);
+
+  // 创建爆炸效果
+  const createExplosion = (x, y, color) => {
+    const particleCount = 12;
+    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
+      id: Date.now() + i,
+      x,
+      y,
+      angle: (i * 360) / particleCount,
+      speed: Math.random() * 3 + 2,
+      life: 1,
+      color
+    }));
+    setParticles(prev => [...prev, ...newParticles]);
+  };
+
+  const handleKeyPress = useCallback((e) => {
+    if (!gameStarted || gameOver) return;
+    
+    const speed = 20;
+    switch(e.key) {
+      case 'ArrowLeft':
+        setPlayerPos(prev => ({
+          ...prev,
+          x: Math.max(20, prev.x - speed)
+        }));
+        break;
+      case 'ArrowRight':
+        setPlayerPos(prev => ({
+          ...prev,
+          x: Math.min(gameWidth - 20, prev.x + speed)
+        }));
+        break;
+      case 'ArrowUp':
+        setPlayerPos(prev => ({
+          ...prev,
+          y: Math.max(20, prev.y - speed)
+        }));
+        break;
+      case 'ArrowDown':
+        setPlayerPos(prev => ({
+          ...prev,
+          y: Math.min(gameHeight - 20, prev.y + speed)
+        }));
+        break;
+      case ' ':
+        setBullets(prev => [...prev, { x: playerPos.x, y: playerPos.y - 20 }]);
+        break;
+    }
+  }, [gameStarted, gameOver, playerPos]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [handleKeyPress]);
+
+  useEffect(() => {
+    if (!gameStarted || gameOver) return;
+
+    const gameLoop = setInterval(() => {
+      // 更新星星位置
+      setStars(prev => prev.map(star => ({
+        ...star,
+        y: star.y + star.speed,
+        ...(star.y > gameHeight && { y: 0, x: Math.random() * gameWidth })
+      })));
+
+      // 更新粒子
+      setParticles(prev => prev
+        .map(particle => ({
+          ...particle,
+          x: particle.x + Math.cos(particle.angle * Math.PI / 180) * particle.speed,
+          y: particle.y + Math.sin(particle.angle * Math.PI / 180) * particle.speed,
+          life: particle.life - 0.02
+        }))
+        .filter(particle => particle.life > 0)
+      );
+
+      setBullets(prev => prev
+        .map(bullet => ({ ...bullet, y: bullet.y - 10 }))
+        .filter(bullet => bullet.y > 0)
+      );
+
+      setEnemies(prev => prev
+        .map(enemy => ({ ...enemy, y: enemy.y + 3 }))
+        .filter(enemy => enemy.y < gameHeight)
+      );
+
+      // 检测子弹击中
+      setBullets(prev => {
+        const newBullets = [...prev];
+        setEnemies(prevEnemies => {
+          const newEnemies = prevEnemies.filter(enemy => {
+            const hit = newBullets.some(bullet => 
+              Math.abs(bullet.x - enemy.x) < 20 && 
+              Math.abs(bullet.y - enemy.y) < 20
+            );
+            if (hit) {
+              createExplosion(enemy.x, enemy.y, '#ff4444');
+              setScore(s => s + 100);
+              return false;
+            }
+            return true;
+          });
+          return newEnemies;
+        });
+        return newBullets.filter(bullet => 
+          !enemies.some(enemy => 
+            Math.abs(bullet.x - enemy.x) < 20 && 
+            Math.abs(bullet.y - enemy.y) < 20
+          )
+        );
+      });
+
+      if (enemies.some(enemy => 
+        Math.abs(enemy.x - playerPos.x) < 20 && 
+        Math.abs(enemy.y - playerPos.y) < 20
+      )) {
+        createExplosion(playerPos.x, playerPos.y, '#44aaff');
+        setGameOver(true);
+      }
+    }, 50);
+
+    return () => clearInterval(gameLoop);
+  }, [gameStarted, gameOver, enemies, playerPos]);
+
+  useEffect(() => {
+    if (!gameStarted || gameOver) return;
+
+    const enemySpawn = setInterval(() => {
+      setEnemies(prev => [
+        ...prev,
+        {
+          x: Math.random() * (gameWidth - 40) + 20,
+          y: -20,
+          type: Math.random() > 0.7 ? 'large' : 'normal'
+        }
+      ]);
+    }, 1000);
+
+    return () => clearInterval(enemySpawn);
+  }, [gameStarted, gameOver]);
+
+  const startNewGame = () => {
+    setGameStarted(true);
+    setGameOver(false);
+    setScore(0);
+    setPlayerPos({ x: 200, y: 500 });
+    setBullets([]);
+    setEnemies([]);
+    setParticles([]);
+  };
+
+  return (
+    <Card className="w-full max-w-lg mx-auto p-4 bg-gray-900">
+      <div className="text-center mb-4">
+        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+          星际战机
+        </h2>
+        <p className="text-lg text-blue-400">得分: {score}</p>
+      </div>
+      
+      <div 
+        className="relative mx-auto overflow-hidden rounded-lg border border-blue-500/30"
+        style={{ 
+          width: gameWidth, 
+          height: gameHeight,
+          background: 'linear-gradient(to bottom, #000033, #000066)'
+        }}
+      >
+        {/* 星空背景 */}
+        {stars.map((star, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              left: star.x,
+              top: star.y,
+              width: star.size,
+              height: star.size,
+              opacity: star.size / 3
+            }}
+          />
+        ))}
+
+        {!gameStarted && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+            <button
+              onClick={startNewGame}
+              className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-lg text-lg
+                       hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all
+                       shadow-lg shadow-blue-500/50"
+            >
+              开始游戏
+            </button>
+          </div>
+        )}
+        
+        {gameOver && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm">
+            <h3 className="text-3xl font-bold text-white mb-4">游戏结束</h3>
+            <p className="text-2xl text-blue-400 mb-6">最终得分: {score}</p>
+            <button
+              onClick={startNewGame}
+              className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-lg text-lg
+                       hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all
+                       shadow-lg shadow-blue-500/50"
+            >
+              重新开始
+            </button>
+          </div>
+        )}
+        
+        {/* 玩家飞机 */}
+        <div
+          className="absolute transition-all duration-100"
+          style={{
+            left: playerPos.x - 20,
+            top: playerPos.y - 20,
+          }}
+        >
+          <div className="w-10 h-10 relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-600"
+                 style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
+            <div className="absolute inset-0 bg-blue-300/50"
+                 style={{ clipPath: 'polygon(50% 20%, 20% 90%, 80% 90%)' }} />
+          </div>
+          {/* 引擎效果 */}
+          <div className="absolute top-8 left-3 w-4 h-4 bg-gradient-to-b from-orange-500 to-transparent
+                        animate-pulse" 
+               style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }} />
+        </div>
+        
+        {/* 子弹 */}
+        {bullets.map((bullet, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-6 rounded-full"
+            style={{
+              left: bullet.x - 1,
+              top: bullet.y - 3,
+              background: 'linear-gradient(to bottom, #60a5fa, #3b82f6)',
+              boxShadow: '0 0 10px #60a5fa'
+            }}
+          />
+        ))}
+        
+        {/* 敌机 */}
+        {enemies.map((enemy, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              left: enemy.x - 20,
+              top: enemy.y - 20,
+              width: enemy.type === 'large' ? 48 : 40,
+              height: enemy.type === 'large' ? 48 : 40,
+            }}
+          >
+            <div className="w-full h-full relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-red-400 to-red-600"
+                   style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }} />
+              <div className="absolute inset-0 bg-red-300/50"
+                   style={{ clipPath: 'polygon(50% 80%, 20% 10%, 80% 10%)' }} />
+            </div>
+          </div>
+        ))}
+        
+        {/* 爆炸粒子 */}
+        {particles.map(particle => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full"
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: 4,
+              height: 4,
+              background: particle.color,
+              opacity: particle.life,
+              boxShadow: `0 0 ${8 * particle.life}px ${particle.color}`
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="text-center mt-4 text-blue-300 text-sm">
+        使用方向键移动，空格键发射
+      </div>
+    </Card>
+  );
+};
+
+export default SpaceShooter;

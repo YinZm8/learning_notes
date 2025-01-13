@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉语新解 - 美妙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 复古怀旧系：典雅柔和的色彩 */
+            --primary-color: #8C6450; /* 深咖啡色 */
+            --secondary-color: #C5B8A5; /* 复古米棕色 */
+            --accent-color: #E0C9A6; /* 暖色调强调 */
+            --background-color: #F2EDE7; /* 温暖米白 */
+            --text-color: #5B4636; /* 深棕灰 */
+            --light-text-color: #8C7D6A; /* 浅棕灰 */
+            --divider-color: #D9C8B8; /* 分隔线色 */
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color);
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text-color);
+        }
+        .card {
+            width: 300px;
+            height: auto;
+            background-color: #FFF9F2;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: var(--secondary-color);
+            color: #FFF;
+            padding: 20px;
+            text-align: left;
+        }
+        h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            margin: 0;
+            font-weight: 700;
+        }
+        .content {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .word {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .word-main {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .word-main::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        .word-sub {
+            font-size: 14px;
+            color: var(--light-text-color);
+            margin: 5px 0;
+        }
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--divider-color);
+            margin: 20px 0;
+        }
+        .explanation {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .quote {
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-color);
+        }
+        .background-text {
+            position: absolute;
+            font-size: 150px;
+            color: rgba(140, 100, 80, 0.15);
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>汉语新解</h1>
+        </div>
+        <div class="content">
+            <div class="word">
+                <div class="word-main">美妙</div>
+                <div class="word-sub">Mĕi Miào</div>
+                <div class="word-sub">Beautiful & Wondrous</div>
+                <div class="word-sub">美妙 (Meimyou)</div>
+            </div>
+            <div class="divider"></div>
+            <div class="explanation">
+                <div class="quote">
+                    <p>
+                        把世间的伪装穿成了晚礼服，<br>
+                        再配上一串虚假的赞叹。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="background-text">美</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等鱼七 | 独立设计师品牌</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .background-svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in {
+            opacity: 0;
+            animation: slideIn 1.2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .menu-hover {
+            transition: all 0.3s ease;
+        }
+
+        .menu-hover:hover {
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 min-h-screen">
+    <!-- 背景SVG -->
+    <div class="background-svg">
+        <svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+            <!-- 背景 -->
+            <rect width="800" height="1000" fill="#f4f1ec"/>
+            
+            <!-- 主要图形元素 -->
+            <g transform="translate(400, 500)">
+                <!-- 中心圆形 -->
+                <circle cx="0" cy="0" r="200" fill="none" stroke="#2c2c2c" stroke-width="1"/>
+                
+                <!-- 装饰性线条 -->
+                <path d="M-150,-150 Q0,-300 150,-150 T300,0" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                <path d="M-150,150 Q0,300 150,150 T300,0" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                
+                <!-- 抽象花纹 -->
+                <g transform="rotate(45)">
+                    <path d="M-180,0 Q0,-180 180,0 T360,180" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                    <path d="M-180,0 Q0,180 180,0 T360,-180" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                </g>
+                
+                <!-- 点缀元素 -->
+                <circle cx="-100" cy="-100" r="5" fill="#2c2c2c"/>
+                <circle cx="100" cy="-100" r="5" fill="#2c2c2c"/>
+                <circle cx="-100" cy="100" r="5" fill="#2c2c2c"/>
+                <circle cx="100" cy="100" r="5" fill="#2c2c2c"/>
+                
+                <!-- 放射状线条 -->
+                <g>
+                    <line x1="-250" y1="0" x2="-150" y2="0" stroke="#2c2c2c" stroke-width="0.5"/>
+                    <line x1="150" y1="0" x2="250" y2="0" stroke="#2c2c2c" stroke-width="0.5"/>
+                    <line x1="0" y1="-250" x2="0" y2="-150" stroke="#2c2c2c" stroke-width="0.5"/>
+                    <line x1="0" y1="150" x2="0" y2="250" stroke="#2c2c2c" stroke-width="0.5"/>
+                </g>
+                
+                <!-- 装饰性圆环 -->
+                <circle cx="0" cy="0" r="280" fill="none" stroke="#2c2c2c" stroke-width="0.2"/>
+                <circle cx="0" cy="0" r="290" fill="none" stroke="#2c2c2c" stroke-width="0.2"/>
+                <circle cx="0" cy="0" r="300" fill="none" stroke="#2c2c2c" stroke-width="0.2"/>
+            </g>
+            
+            <!-- 印花图案重复元素 -->
+            <g transform="translate(400, 200) scale(0.5)">
+                <path d="M-50,-50 Q0,-100 50,-50 T100,0" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                <circle cx="0" cy="0" r="30" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+            </g>
+            
+            <g transform="translate(400, 800) scale(0.5)">
+                <path d="M-50,-50 Q0,-100 50,-50 T100,0" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+                <circle cx="0" cy="0" r="30" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="text-2xl font-medium tracking-wider">等 鱼 七</div>
+                <div class="hidden md:flex space-x-12">
+                    <a href="#" class="nav-link menu-hover">首页</a>
+                    <a href="#prints" class="nav-link menu-hover">印花系列</a>
+                    <a href="#bags" class="nav-link menu-hover">帆布包</a>
+                    <a href="#about" class="nav-link menu-hover">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <div class="content-wrapper">
+        <!-- 首页主视觉 -->
+        <section class="min-h-screen flex items-center justify-center px-6">
+            <div class="text-center fade-in">
+                <h1 class="text-6xl md:text-7xl font-light mb-8 tracking-wider">等 鱼 七</h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-12 tracking-wide">独立印花设计工作室</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#prints" class="px-8 py-3 bg-gray-900 text-white rounded hover:bg-gray-800 transition-colors">
+                        探索作品
+                    </a>
+                    <a href="#about" class="px-8 py-3 border border-gray-900 rounded hover:bg-gray-100 transition-colors">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 滚动效果
+        document.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>稳定版倒计时</title>
+    <title>倒计时</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -64,7 +64,7 @@
     <script>
         // 唯一脚本标签
         const targetTime = Date.now() + 108000000; // 初始目标时间 (30小时)
-        let speedMultiplier = 100000.0; // 默认1倍速
+        let speedMultiplier = 1.0; // 默认1倍速
         let startTime = Date.now();
         let accumulatedTime = 0;
         let lastRealTime = Date.now();
@@ -104,16 +104,21 @@
 
         // 速度控制函数
         function setSpeed(multiplier) {
+            const now = Date.now();
+            accumulatedTime += (now - lastRealTime) * speedMultiplier;
+            lastRealTime = now;
             speedMultiplier = multiplier;
-            lastRealTime = Date.now(); // 重置时间参考点
         }
 
-        // 键盘事件监听
-        document.addEventListener('keydown', (e) => {
-            if (e.key >= '1' && e.key <= '5') {
-                setSpeed(parseInt(e.key));
-                console.log(`当前加速倍率：${e.key}倍`);
-            }
+        // 点击加速事件
+        document.addEventListener('click', (e) => {
+            const windowWidth = window.innerWidth;
+            const clickX = e.clientX;
+            
+            // 判断点击区域
+            const newSpeed = clickX < windowWidth / 2 ? 100000.0 : 1.0;
+            setSpeed(newSpeed);
+            showSpeedHint(newSpeed);
         });
 
         // 启动动画

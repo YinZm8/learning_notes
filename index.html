@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印花帆布包设计工作室</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* 添加背景图和呼吸动效 */
+        #home {
+            background-image: url('path/to/background.jpg'); /* 请替换为实际背景图路径 */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+        .breathing-button {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            animation: breathe 2s infinite;
+        }
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert("Hello, World!");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>印花帆布包设计工作室</h1>
+    </header>
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#canvas">帆布包</a>
+        <a href="#about">关于我们</a>
+        <a href="#contact">联系我们</a>
+    </nav>
+    <div class="content">
+        <section id="home">
+            <h2>首页</h2>
+            <p>欢迎来到印花帆布包设计工作室。我们提供高质量的定制帆布包设计服务。</p>
+            <!-- 添加按钮 -->
+            <button class="breathing-button" onclick="showAlert()">点击我</button>
+        </section>
+        <section id="canvas">
+            <h2>帆布包</h2>
+            <p>探索我们的各种帆布包设计，每一件产品都充满了创意和个性。</p>
+        </section>
+        <section id="about">
+            <h2>关于我们</h2>
+            <p>我们是一家专注于设计和制作高质量印花帆布包的工作室。我们的团队由一群充满创意和热情的设计师组成，致力于为客户提供独一无二的产品。</p>
+        </section>
+        <section id="contact">
+            <h2>联系我们</h2>
+            <p>如果您有任何问题或需要定制产品，请通过以下方式联系我们：</p>
+            <p>电话: 123-456-7890</p>
+            <p>邮箱: contact@canvasdesignstudio.com</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2023 印花帆布包设计工作室</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>稳定版倒计时</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        #timer {
+            color: #fff;
+            font-size: 80px;
+            font-weight: 700;
+            display: flex;
+            gap: 0.2em;
+        }
+
+        .time-block {
+            min-width: 1.2em;
+            text-align: center;
+            position: relative;
+        }
+
+        .separator {
+            margin: 0 0.1em;
+        }
+
+        #countdown-label {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-family: 'Orbitron', 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown-label">距开播</div>
+    
+    <div id="countdown">
+        <div id="timer">
+            <!-- 修改为小时:分钟:秒结构 -->
+            <span class="time-block" id="hours">00</span>
+            <span class="separator">:</span>
+            <span class="time-block" id="minutes">00</span>
+            <span class="separator">:</span>
+            <span class="time-block" id="seconds">00</span>
+        </div>
+    </div>
+
+    <script>
+        // 唯一脚本标签
+        const targetTime = Date.now() + 108000000; // 初始目标时间 (30小时)
+        let speedMultiplier = 100000.0; // 默认1倍速
+        let startTime = Date.now();
+        let accumulatedTime = 0;
+        let lastRealTime = Date.now();
+
+        function updateTimer() {
+            const realNow = Date.now();
+            // 加速时间计算
+            accumulatedTime += (realNow - lastRealTime) * speedMultiplier;
+            lastRealTime = realNow;
+            
+            const diff = targetTime - (startTime + accumulatedTime);
+            
+            if (diff <= 0) {
+                resetDisplay();
+                cancelAnimationFrame(animationId);
+                return;
+            }
+
+            // 时间计算
+            const hours = Math.floor(diff / 3600000).toString().padStart(2, '0');
+            const minutes = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            const seconds = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+
+            // 更新显示
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+            
+            animationId = requestAnimationFrame(updateTimer);
+        }
+
+        function resetDisplay() {
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
+        }
+
+        // 速度控制函数
+        function setSpeed(multiplier) {
+            speedMultiplier = multiplier;
+            lastRealTime = Date.now(); // 重置时间参考点
+        }
+
+        // 键盘事件监听
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '1' && e.key <= '5') {
+                setSpeed(parseInt(e.key));
+                console.log(`当前加速倍率：${e.key}倍`);
+            }
+        });
+
+        // 启动动画
+        let animationId = requestAnimationFrame(updateTimer);
+    </script>
+     
+</body>
+</html>

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>倒计时</title>
+    <link href="https://font.zcool.com.cn/css2/?family=ZCOOLKuHei" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
     <style>
         body {
             background: #000;
@@ -35,20 +37,23 @@
         }
 
         #countdown-label {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: #fff;
-            font-family: 'Orbitron', 'Courier New', monospace;
-            font-size: 24px;
-            font-weight: 500;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%); /* 居中修正 */
+            width: 100%;   /* 保证居中范围 */
+            text-align: center;
+            color: #f05c20;
+            font-family: 'Zhi Mang Xing', cursive !important;
+            font-size: 80px;
+            font-weight: 400;
             letter-spacing: 2px;
-            opacity: 0.8;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div id="countdown-label">距开播</div>
+    <!--<div id="countdown-label">距开播</div>-->
     
     <div id="countdown">
         <div id="timer">
@@ -63,7 +68,7 @@
 
     <script>
         // 唯一脚本标签
-        const targetTime = Date.now() + 108000000; // 初始目标时间 (30小时)
+        const targetTime = Date.now() + 108000000/5; // 初始目标时间 (30小时)
         let speedMultiplier = 1.0; // 默认1倍速
         let startTime = Date.now();
         let accumulatedTime = 0;
